@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PARIS-360</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+  
+
+
+    button {
+      position: absolute;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+
+    #navigateButton {
+      bottom: 10px;
+      left: 10px;
+      background-color: #e00d4e;
+      color: #fff;
+      border: none;
+    }
+      
+  </style>
+</head>
+<body>
+  <div id="container">
+   
+    <button id="navigateButton" onclick="navigateToOtherPage()">Tour Lists</button>
+    <iframe src="https://360stories.com/paris/place/saint-jacques-tower?mode=2&playerMode=2" width="100%" height="600" allowfullscreen style="border: 0" scrolling="none" name="360Stories"></iframe>
+  </div>
+
+  <script>
+    function navigateToOtherPage() {
+      // Change the URL to the desired page
+      window.location.href = "tour_listing_detail.html";
+    }
+  </script>
+</body>
+</html>
