@@ -598,48 +598,47 @@ include('php/connection.php');
 					data-m576="1" data-m768="1" data-m992="2" data-m1200="4">
 
 					<!-- Wrapper For Slides -->
-					<div class="carousel-inner" role="listbox">
 
-						<?php foreach ($packages as $index => $package): ?>
-							<div class="carousel-item <?php echo ($index == 0) ? 'active' : ''; ?>">
-								<div class="row">
-									<div class="col w_shop_101_grid_col_4">
-										<div class="w_shop_101_wrapper">
-											<div class="w_shop_101_image">
-												<img src="<?php echo $package['image_url']; ?>"
-													alt="w_shop_101_<?php echo $index + 1; ?>">
-											</div>
-											<div class="w_shop_101_header">
+					<?php foreach ($packages as $index => $package): ?>
+						<div class="carousel-item <?php echo ($index == 0) ? 'active' : ''; ?>">
+							<div class="row">
+								<div class="col w_shop_101_grid_col_4">
+									<div class="w_shop_101_wrapper">
+										<div class="w_shop_101_image">
+											<img src="<?php echo $package['image_url']; ?>"
+												alt="w_shop_101_<?php echo $index + 1; ?>">
+										</div>
+										<div class="w_shop_101_header">
+											<a href="<?php echo $package['link']; ?>">
+												<?php echo $package['offer_title']; ?>
+											</a>
+											<a href="<?php echo $package['link']; ?>">
+												<?php echo $package['destination_title']; ?>
+											</a>
+										</div>
+										<div class="w_shop_101_footer">
+											<div class="w_shop_101_price">
 												<a href="<?php echo $package['link']; ?>">
-													<?php echo $package['offer_title']; ?>
+													<?php echo '$' . number_format($package['price'], 2); ?>
 												</a>
-												<a href="<?php echo $package['link']; ?>">
-													<?php echo $package['destination_title']; ?>
-												</a>
-											</div>
-											<div class="w_shop_101_footer">
-												<div class="w_shop_101_price">
-													<a href="<?php echo $package['link']; ?>">
-														<?php echo '$' . number_format($package['price'], 2); ?>
-													</a>
-													<a href="<?php echo $package['link']; ?>"><span
-															class="fa fa-cart-arrow-down"></span></a>
-													<?php if (!empty($package['old_price'])): ?>
-														<span class="w_shop_101_old_price">
-															<?php echo '$' . number_format($package['old_price'], 2); ?>
-														</span>
-													<?php endif; ?>
-												</div>
+												<a href="<?php echo $package['link']; ?>"><span
+														class="fa fa-cart-arrow-down"></span></a>
+												<?php if (!empty($package['old_price'])): ?>
+													<span class="w_shop_101_old_price">
+														<?php echo '$' . number_format($package['old_price'], 2); ?>
+													</span>
+												<?php endif; ?>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						<?php endforeach; ?>
+						</div>
+					<?php endforeach; ?>
 
-					</div><!-- End of Wrapper For Slides -->
-				</div><!-- End Paradise Slider -->
-			</div>
+				</div><!-- End of Wrapper For Slides -->
+			</div><!-- End Paradise Slider -->
+		</div>
 
 		</div>
 	</section>
@@ -792,127 +791,59 @@ include('php/connection.php');
 
 
 	<!-- Start blog Area -->
-	<section class="recent-blog-area section-gap">
-		<div class="container">
-			<div class="row d-flex justify-content-center">
-				<div class="menu-content pb-40 col-lg-9">
-					<div class="title text-center">
-						<h1 class="mb-10">Latest from Our Blog</h1>
-						<p> Stay updated with the latest travel trends, tips, and inspiration</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<!-- Paradise Slider -->
-				<div id="post_082_mov_1_col_3"
-					class="carousel slide post_082 post_082_control_button swipe_x ps_easeOutInCubic"
-					data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000" data-column="3"
-					data-m576="1" data-m768="1" data-m992="3" data-m1200="3">
+	<?php
 
-					<!-- Wrapper For Slides -->
-					<div class="carousel-inner" role="listbox">
 
-						<!-- 1st Box -->
-						<div class="carousel-item active">
-							<div class="row"> <!-- Row -->
-								<div class="col post_082_grid"> <!-- Grid -->
-									<div class="post_082_wrapper"> <!-- Wrapper -->
+	try {
 
-										<!-- Image -->
-										<div class="post_082_image">
-											<img src="img/b1.jpg" alt="b1">
-										</div>
-										<!-- Text Content -->
-										<div class="post_082_content post_082_content_col_3">
-											<h4>Trip Of Australia</h4>
-											<h5><a href="blog-single.html">"Exploring the diverse wonders Down Under,
-													where golden deserts meet turquoise reefs and every adventure is a
-													story waiting to be written.</a></h5>
-											<a href="blog-single.html">23 may 2021</a>
-											<div class="post_082_footer"> <!-- Footer -->
-												<a href="blog-single.html"><span class="fa fa-heart-o"></span>654
-													likes</a>
-												<a href="blog-single.html"><span class="fa fa-comment-o"></span>100
-													comments</a>
-												<a href="blog-single.html">read more</a>
-											</div> <!-- /Footer -->
-										</div> <!-- /Text Content -->
 
-									</div> <!-- /.post_082_wrapper -->
-								</div> <!-- /.post_082_grid -->
-							</div> <!-- /.row -->
-						</div> <!-- /item -->
-						<!-- End of 1st Box -->
+		// SQL query to retrieve latest blog posts
+		$sql = "SELECT * FROM blog_posts ORDER BY date DESC LIMIT 3";
 
-						<!-- 2nd Box -->
-						<div class="carousel-item">
-							<div class="row"> <!-- Row -->
-								<div class="col post_082_grid"> <!-- Grid -->
-									<div class="post_082_wrapper"> <!-- Wrapper -->
+		// Prepare the SQL statement
+		$stmt = $pdo->prepare($sql);
 
-										<!-- Image-->
-										<div class="post_082_image">
-											<img src="img/b2.jpg" alt="b2">
-										</div>
-										<!-- Text Content-->
-										<div class="post_082_content post_082_content_col_3">
-											<h4>Trip Of Africa</h4>
-											<h5><a href="blog-single.html">Embarking on a journey of wild wonders and
-													vibrant cultures in the heart of Africa..</a></h5>
-											<a href="blog-single.html">23 june 2022</a>
-											<div class="post_082_footer"> <!-- Footer -->
-												<a href="blog-single.html"><span class="fa fa-heart-o"></span>654
-													likes</a>
-												<a href="blog-single.html"><span class="fa fa-comment-o"></span>100
-													comments</a>
-												<a href="blog-single.html">read more</a>
-											</div> <!-- /Footer -->
-										</div> <!-- /Text Content -->
+		// Execute the query
+		$stmt->execute();
 
-									</div> <!-- /.post_082_wrapper -->
-								</div> <!-- /.post_082_grid -->
-							</div> <!-- /.row -->
-						</div> <!-- /item -->
-						<!-- End of 2nd Box -->
+		// Check if there are any blog posts
+		if ($stmt->rowCount() > 0) {
+			// Output data of each row
+			while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+				echo '
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col post_082_grid">
+                        <div class="post_082_wrapper">
+                            <div class="post_082_image">
+                                <img src="' . $row["image_url"] . '" alt="' . $row["title"] . '">
+                            </div>
+                            <div class="post_082_content post_082_content_col_3">
+                                <h4>' . $row["title"] . '</h4>
+                                <h5><a href="blog-single.html">' . $row["content"] . '</a></h5>
+                                <a href="blog-single.html">' . $row["date"] . '</a>
+                                <div class="post_082_footer">
+                                    <a href="blog-single.html"><span class="fa fa-heart-o"></span>' . $row["likes"] . ' likes</a>
+                                    <a href="blog-single.html"><span class="fa fa-comment-o"></span>' . $row["comments"] . ' comments</a>
+                                    <a href="blog-single.html">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+			}
+		} else {
+			echo "0 results";
+		}
+	} catch (PDOException $e) {
+		echo "Connection failed: " . $e->getMessage();
+	}
 
-						<!-- 3rd Box -->
-						<div class="carousel-item">
-							<div class="row"> <!-- Row -->
-								<div class="col post_082_grid"> <!-- Grid -->
-									<div class="post_082_wrapper"> <!-- Wrapper -->
+	// Close the connection
+	$conn = null;
+	?>
 
-										<!-- Image -->
-										<div class="post_082_image">
-											<img src="img/b3.jpg" alt="b3">
-										</div>
-										<!-- Text Content -->
-										<div class="post_082_content post_082_content_col_3">
-											<h4>Trip Of France</h4>
-											<h5><a href="blog-single.html"> Lost in the charm of France's timeless
-													beauty, where every cobblestone street tells a story and every
-													corner whispers of art and romance.</a></h5>
-											<a href="blog-single.html">1 july 2023</a>
-											<div class="post_082_footer"> <!-- Footer -->
-												<a href="blog-single.html"><span class="fa fa-heart-o"></span>654
-													likes</a>
-												<a href="blog-single.html"><span class="fa fa-comment-o"></span>100
-													comments</a>
-												<a href="blog-single.html">read more</a>
-											</div> <!-- /Footer -->
-										</div> <!-- /Text Content -->
-
-									</div> <!-- /.post_082_wrapper -->
-								</div> <!-- /.post_082_grid -->
-							</div> <!-- /.row -->
-						</div> <!-- /item -->
-						<!-- End of 3rd Box -->
-
-					</div> <!-- End of Wrapper For Slides -->
-
-				</div> <!-- End Paradise Slider -->
-			</div>
-		</div>
-	</section>
 	<!-- End recent-blog Area -->
 	<script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
 	<script src="https://mediafiles.botpress.cloud/9244075a-f128-4d18-b8e4-4517cc6ff3e4/webchat/config.js"
